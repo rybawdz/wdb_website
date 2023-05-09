@@ -1,0 +1,32 @@
+body{
+    font-family: sans-serif;
+}
+h1 {
+    text-align: center;
+    color: black;
+    margin: 30 px 0 50px;
+}
+h2 {
+    text-align: center;
+    color: black;
+    margin: 30 px 0 50px;
+}
+p {
+    text-align: center;
+    color: black;
+    margin: 30 px 0 50px;
+}
+.gallery{
+    text-align: center;
+    margin: 10px 50px;
+}
+.gallery img {
+    width: 500px;
+    padding: 5px;
+    filter: grayscale(100%);
+    transition: 1s;
+}
+.gallery img:hover{
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
