@@ -1,4 +1,3 @@
-
 <head>
 <script type="text/javascript" src="js/jquery-3.6.3.min.js"></script>
 <title>Halal Bank</title>

@@ -7,6 +7,8 @@ services:
      - '8080:80'
     volumes :
       - ./src:/var/www/html
+      - ./nginx/certServer.crt:/etc/nginx/certs/certServer.crt
+      - ./nginx/serverkey.pem:/etc/nginx/certs/serverkey.pem
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - php
@@ -17,7 +19,7 @@ services:
       dockerfile: php.dockerfile
     volumes:
      - ./src:/var/www/html:delegated
-     - ./src/php.ini:/etc/php/conf.d/php.ini
+     - ./src/php.ini://usr/local/etc/php/php.ini
     env_file:
     - ./env/php.env
   mysql:

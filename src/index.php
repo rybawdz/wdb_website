@@ -1,5 +1,5 @@
 <?php
-
+ini_set("session.cookie_httponly", 1);
 $servername = "mysql";
 $username = getenv('MYSQL_USER', true) ?: getenv('MYSQL_USER');
 $password = getenv('MYSQL_PASSWORD', true) ?: getenv('MYSQL_PASSWORD');

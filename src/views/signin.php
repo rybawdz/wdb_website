@@ -1,6 +1,7 @@
 <?php
 if (isset($_GET['err'])){
-    $message = $_GET['err'];
+
+    $message = htmlspecialchars($_GET['err']);
     echo $message;
 
 }
