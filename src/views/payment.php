@@ -18,6 +18,7 @@ echo 'Logged in as ' . $_SESSION['username'];
 <FONT SIZE="20" FACE="courier" COLOR=blue>
 <body bgcolor="#E7E7EF"><br>
 <table>
+<tr><td><h3>Title</h3></td><td><input type=text name="title" required></td></tr>
 <tr><td><h3>Account No</h3></td><td ><input type=text name="accountNumber" required></td></tr>
 <tr><td><h3>Account Holder name</h3></td><td ><input type=text name="accountName" required></td></tr>
 <tr><td><h3>Amount</h3></td><td><input type=number name="amount" required></td></tr>

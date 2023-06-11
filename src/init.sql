@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS USERS (
      lastName CHAR(40) NOT NULL,
      email CHAR(40) NOT NULL,
      username text NOT NULL,
-     password text NOT NULL,   
+     password text NOT NULL,
+     account text NOT NULL,   
      PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS TRANSACTIONS (
@@ -15,6 +16,7 @@ CREATE TABLE IF NOT EXISTS TRANSACTIONS (
      name CHAR(30) NOT NULL,
      amount BIGINT NOT NULL,
      account text NOT NULL,
+     title text NOT NULL,
      PRIMARY KEY (id)
 
 );

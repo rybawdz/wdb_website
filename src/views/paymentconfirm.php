@@ -5,7 +5,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 echo 'Logged in as ' . $_SESSION['username'];
 
-    if(isset($_POST['accountNumber']) && isset($_POST['accountName']) && isset($_POST['amount']) )
+    if(isset($_POST['accountNumber']) && isset($_POST['accountName']) && isset($_POST['title']) && isset($_POST['amount'] ) )
     $val = 1;
     else
     $val = 0;
@@ -32,6 +32,12 @@ echo 'Logged in as ' . $_SESSION['username'];
     <form method="POST" action="/paymentsummary">
             <body bgcolor="#E7E7EF"><br>
                 <table>
+                    <tr>
+                        <td>
+                            <h3>Title: <?php echo $_POST['title']; ?></h3>
+                        </td>
+                        <td ><input type=hidden name="title" value =  <?php echo $_POST['title']; ?> ></td>
+                    </tr>
                     <tr>
                         <td>
                             <h3>Account No <?php echo $_POST['accountNumber']; ?></h3>

@@ -3,7 +3,22 @@ session_start();
 if (!isset($_SESSION['loggedin'])) {
     exit;
 }
-echo 'Welcome ' . $_SESSION['username'] . '!';
+include "db.php";
+
+$account = "";
+$name = "";
+$a = "Welcome " . $_SESSION['username'] . "\n" ;
+echo nl2br($a);
+$stmt = $con->prepare("SELECT account, name FROM USERS WHERE username = '" . $_SESSION['username']. "'");
+$stmt->execute();
+$stmt->store_result();
+$stmt->bind_result($account, $name);
+$stmt->fetch();
+
+echo nl2br('Name: ' . $name . "\n");
+echo 'Account number: ' . $account;
+
+
 ?>
 
 
@@ -33,10 +48,11 @@ echo 'Welcome ' . $_SESSION['username'] . '!';
 include "db.php";
 
 
-$result = mysqli_query($con, "SELECT * FROM TRANSACTIONS WHERE username = '" . $_SESSION['username']. "'");
+$result = mysqli_query($con, "SELECT * FROM TRANSACTIONS WHERE username = '" . $_SESSION['username']. "' OR account = '" . $account. "'");
 if (mysqli_num_rows($result) != 0){
 echo "<table border='1'>
 <tr>
+<th>Title</th>
 <th>Transaction id</th>
 <th>Receipient Name</th>
 <th>Receipient Account Number</th>
@@ -46,6 +62,7 @@ echo "<table border='1'>
 
 while ($row = mysqli_fetch_array($result)) {
     echo "<tr>";
+    echo "<td>" . $row['title'] . "</td>";
     echo "<td>" . $row['id'] . "</td>";
     echo "<td>" . $row['name'] . "</td>";
     echo "<td>" . $row['account'] . "</td>";
