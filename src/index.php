@@ -12,6 +12,9 @@ $request = $_SERVER['REQUEST_URI'];
 if(substr( $request, 0, 7 ) === "/signin"){
     require __DIR__ . '/views/signin.php';
 }
+else if(substr( $request, 0, 9 ) === "/callback"){
+    require __DIR__ . '/views/callback.php';
+}
 else{
 switch ($request) {
     case '/signin' :
@@ -32,6 +35,9 @@ switch ($request) {
     case '/resetpwd' :
         require __DIR__ . '/views/resetpwd.php';
         break;
+    case '/callback' :
+        require __DIR__ . '/views/callback.php';
+        break;
     case '/payment' :
         require __DIR__ . '/views/payment.php';
         break;
@@ -44,6 +50,7 @@ switch ($request) {
     default:
         http_response_code(404);
         require __DIR__ . '/views/helo.php';
+        echo 'default';
         break;
     }
 }

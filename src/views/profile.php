@@ -1,8 +1,27 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedin'])) {
+if (!isset($_SESSION['loggedin']) && !isset($_SESSION['token'])) {
+    echo 'a';
     exit;
 }
+
+if(isset($_SESSION['token'])){
+require('./config.php');
+
+$client->setAccessToken($_SESSION['token']);
+if($client->isAccessTokenExpired()){
+  header('Location: logout.php');
+  exit;
+}
+$google_oauth = new Google_Service_Oauth2($client);
+$user_info = $google_oauth->userinfo->get();
+$_SESSION['username'] = $user_info['email'];
+$name = $user_info['givenName'] . " " . $user_info['familyName'];
+$account = $user_info['id'];
+$a = "Welcome " . $_SESSION['username'] . "\n" ;
+echo nl2br($a);
+}
+else{
 include "db.php";
 
 $account = "";
@@ -14,10 +33,9 @@ $stmt->execute();
 $stmt->store_result();
 $stmt->bind_result($account, $name);
 $stmt->fetch();
-
+}
 echo nl2br('Name: ' . $name . "\n");
 echo 'Account number: ' . $account;
-
 
 ?>
 
